@@ -1,15 +1,51 @@
+@use "fonts";
+@use "vars";
+
+:root {
+    @each $key, $value in vars.$fonts {
+        --font-#{$key}: #{$value};
+    }
+
+    @each $key, $value in vars.$colors {
+        --color-#{$key}: #{$value};
+    }
+
+    @each $key, $value in vars.$breakpoints {
+        --breakpoint-#{$key}: #{$value};
+    }
+}
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     outline: none;
 }
 
+html {
+    width: 100%;
+    overflow-x: clip;
+    overscroll-behavior: none;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100svh;
+    overflow-x: clip;
+    overscroll-behavior: none;
+    font-family: var(--font-primary);
     text-decoration-skip: objects;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
+    background-color: var(--color-white-total);
+    color: var(--color-blur-dark);
     -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 main {

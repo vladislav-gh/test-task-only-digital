@@ -2,17 +2,6 @@ import path from "path";
 
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
-const sassLoader = {
-    loader: "sass-loader",
-    options: {
-        additionalData: `
-        @use 'sass:list';
-        @use 'sass:map';
-        @use 'sass:math';
-        `,
-    },
-};
-
 export default {
     entry: path.resolve(import.meta.dirname, "src/app/index.tsx"),
     output: {
@@ -50,18 +39,29 @@ export default {
                             },
                         },
                     },
-                    sassLoader,
+                    "sass-loader",
                 ],
             },
             {
                 test: /\.(s[ac]ss|css)$/i,
                 exclude: /\.module\.(s[ac]ss|css)$/,
-                use: ["style-loader", "css-loader", sassLoader],
+                use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 use: "ts-loader",
+            },
+            {
+                test: /\.svg$/i,
+                type: "asset",
+                resourceQuery: /url/,
+            },
+            {
+                test: /\.svg$/i,
+                issuer: /\.[jt]sx?$/,
+                resourceQuery: { not: [/url/] },
+                use: ["@svgr/webpack"],
             },
         ],
     },

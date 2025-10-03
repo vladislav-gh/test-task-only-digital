@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "vars";
+
+@mixin screen($breakpoint) {
+    @if map.has-key(vars.$breakpoints, $breakpoint) {
+        @media (width >= map.get(vars.$breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "⚠️ Breakpoint '#{$breakpoint}' not found in $breakpoints.";
+    }
+}

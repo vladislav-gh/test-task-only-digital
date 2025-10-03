@@ -1,3 +1,12 @@
+import { Page as PageHome } from "@Pages/home";
+
+import { ContainerGSAP } from "./containers";
+
 export const App = () => {
-    return <div>App is ready</div>;
+    return (
+        <>
+            <ContainerGSAP />
+            <PageHome />
+        </>
+    );
 };
