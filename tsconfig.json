@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "paths": {
+      "@Shared": ["./src/shared"],
+      "@Shared/*": ["./src/shared/*"],
+      "@Entities": ["./src/entities"],
+      "@Entities/*": ["./src/entities/*"],
+      "@Features": ["./src/features"],
+      "@Features/*": ["./src/features/*"],
+      "@Widgets": ["./src/widgets"],
+      "@Widgets/*": ["./src/widgets/*"],
+      "@Pages": ["./src/pages"],
+      "@Pages/*": ["./src/pages/*"],
+      "@App": ["./src/app"],
+      "@App/*": ["./src/app/*"],
+      "@Src/*": ["./src/*"],
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

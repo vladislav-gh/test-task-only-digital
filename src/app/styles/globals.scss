@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    text-decoration-skip: objects;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    text-decoration-skip-ink: none;
+}
+
+img,
+svg {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
