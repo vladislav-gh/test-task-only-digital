@@ -1,5 +1,6 @@
 import path from "path";
 
+import CopyPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
@@ -68,6 +69,9 @@ export default {
     plugins: [
         new HtmlWebpackPlugin({
             template: "./public/index.html",
+        }),
+        new CopyPlugin({
+            patterns: [{ from: "./public", to: "", globOptions: { ignore: ["**/index.html"] } }],
         }),
     ],
 };
