@@ -1,3 +1,9 @@
-export const Page = () => {
-    return <div>Home page</div>;
-};
+import { SectionDates } from "@Widgets/section-dates";
+
+import styles from "./styles.module.scss";
+
+export const Page = () => (
+    <main className={styles.page}>
+        <SectionDates />
+    </main>
+);

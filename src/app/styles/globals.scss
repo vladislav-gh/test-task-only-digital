@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "vendors";
 @use "vars";
 
@@ -8,6 +9,9 @@
 
     @each $key, $value in vars.$colors {
         --color-#{$key}: #{$value};
+        --color-rgb-#{$key}:
+            #{color.channel($value, "red", $space: rgb), color.channel($value, "green", $space: rgb),
+            color.channel($value, "blue", $space: rgb)};
     }
 
     @each $key, $value in vars.$breakpoints {
@@ -41,8 +45,8 @@ body {
     text-decoration-skip: objects;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
-    background-color: var(--color-white-total);
-    color: var(--color-blur-dark);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -55,6 +59,13 @@ main {
 a {
     text-decoration: none;
     text-decoration-skip-ink: none;
+}
+
+button,
+[type="button"],
+[type="submit"] {
+    border: none;
+    cursor: pointer;
 }
 
 img,

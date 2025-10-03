@@ -1,0 +1,39 @@
+@use "@App/styles/mixins";
+
+.section {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 1440px;
+    min-height: 100svh;
+    margin-inline: auto;
+    padding: 59px 20px 13px;
+
+    @include mixins.screen(lg) {
+        padding: 170px 0 104px;
+    }
+}
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+
+    @include mixins.screen(lg) {
+        position: relative;
+        padding-left: 75px;
+        font-size: 56px;
+
+        &::before {
+            display: block;
+            position: absolute;
+            inset: 0;
+            right: auto;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--color-accent-2), var(--color-accent-3));
+            content: "";
+        }
+    }
+}

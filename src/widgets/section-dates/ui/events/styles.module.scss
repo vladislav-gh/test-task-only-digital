@@ -1,0 +1,95 @@
+@use "sass:math";
+@use "@App/styles/vars";
+@use "@App/styles/mixins";
+
+.events {
+    position: relative;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+
+    @include mixins.screen(lg) {
+        padding-top: 0;
+        border-top: none;
+    }
+}
+
+.slider {
+    margin-inline: -20px;
+    padding-inline: 20px;
+
+    @include mixins.screen(lg) {
+        margin-inline: 0;
+        padding-inline: 80px;
+        mask-image: linear-gradient(to right, transparent, black calc(0% + 80px), black calc(100% - 80px), transparent);
+    }
+}
+
+.slide {
+    max-width: math.div(166, 320) * 100vw;
+    opacity: 0.4;
+    transition: opacity vars.$transition;
+
+    &:global(.swiper-slide-active) {
+        opacity: 1;
+    }
+
+    @include mixins.screen(sm) {
+        max-width: 40vw;
+    }
+
+    @include mixins.screen(md) {
+        max-width: 28vw;
+    }
+
+    @include mixins.screen(lg) {
+        max-width: none;
+        opacity: 1;
+    }
+}
+
+.buttonArrowPrev,
+.buttonArrowNext {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+}
+
+.buttonArrowPrev {
+    left: 40px;
+}
+
+.buttonArrowNext {
+    right: 40px;
+}
+
+.buttonArrow {
+    display: none;
+
+    @include mixins.screen(lg) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: var(--color-white-total);
+        box-shadow: 0px 0px 15px rgba(var(--color-rgb-accent-2), 0.1);
+        color: var(--color-accent-2);
+        font-size: 14px;
+        transition: vars.$transition;
+        transition-property: opacity, background-color, color;
+
+        &:global(.swiper-button-disabled) {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-accent-2);
+                color: var(--color-white-total);
+            }
+        }
+    }
+}
