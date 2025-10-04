@@ -1,0 +1,101 @@
+@use "sass:math";
+@use "@App/styles/vars";
+@use "@App/styles/mixins";
+
+$size: 530px;
+$startAngle: 60deg;
+
+.circle {
+    display: none;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+
+    &::before {
+        z-index: -1;
+        position: absolute;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background: var(--color-text);
+        content: "";
+        opacity: 0.1;
+    }
+
+    @include mixins.screen(lg) {
+        display: flex;
+    }
+}
+
+.inner {
+    display: grid;
+    position: relative;
+    place-content: center;
+    width: $size;
+    height: $size;
+    rotate: calc(-1turn / var(--count) * var(--current-index));
+    border: 1px solid rgba(var(--color-rgb-text), 0.2);
+    border-radius: 100%;
+    transition: rotate vars.$transition;
+}
+
+.item {
+    display: block;
+    position: relative;
+    grid-area: 1 / 1;
+    width: 56px;
+    height: 56px;
+    transform: rotate(calc(1turn / var(--count) * var(--index) - $startAngle)) translate(math.div($size, 2))
+        rotate(
+            calc(-1turn / var(--count) * var(--index) + $startAngle + calc(1turn / var(--count) * var(--current-index)))
+        );
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+    transition: transform vars.$transition;
+}
+
+.itemActive {
+    pointer-events: none;
+}
+
+.itemInner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(var(--color-rgb-text), 0.5);
+    border-radius: 100%;
+    background-color: var(--color-bg);
+    transition: vars.$transition;
+    transition-property: border-color, background-color, color, scale;
+
+    .item:not(:hover):not(.itemActive) & {
+        scale: math.div(6, 56);
+        border-color: var(--color-text);
+        background-color: var(--color-text);
+        color: transparent;
+    }
+}
+
+.itemText {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    align-items: center;
+    margin-left: 20px;
+    font-weight: 700;
+    text-align: left;
+    pointer-events: none;
+    transition: vars.$transition;
+    transition-property: opacity, translate;
+
+    .item:not(.itemActive) & {
+        translate: 30px 0;
+        opacity: 0;
+    }
+}

@@ -59,12 +59,12 @@
         justify-content: center;
         width: 40px;
         height: 40px;
-        margin-top: -20px;
+        margin-top: -26px;
         border-radius: 100%;
         background: var(--color-white-total);
         box-shadow: 0px 0px 15px rgba(var(--color-rgb-accent-2), 0.1);
         color: var(--color-accent-2);
-        font-size: 14px;
+        font-size: 12px;
         transition: vars.$transition;
         transition-property: opacity, background-color, color;
 
@@ -83,9 +83,10 @@
 }
 
 .buttonArrowPrev {
-    left: 40px;
+    left: 20px;
 }
 
 .buttonArrowNext {
-    right: 40px;
+    right: 20px;
+    padding-left: 1px;
 }

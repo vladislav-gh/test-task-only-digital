@@ -25,7 +25,7 @@ export const Controls: FC<ControlsProps> = ({ className, current, total, onArrow
 
                 <div className={styles.arrows}>
                     <button
-                        className={styles.buttonArrow}
+                        className={clsx(styles.buttonArrow, styles.buttonArrowPrev)}
                         type="button"
                         aria-label="Предыдущие даты"
                         disabled={current === 1}
@@ -35,7 +35,7 @@ export const Controls: FC<ControlsProps> = ({ className, current, total, onArrow
                     </button>
 
                     <button
-                        className={styles.buttonArrow}
+                        className={clsx(styles.buttonArrow, styles.buttonArrowNext)}
                         type="button"
                         aria-label="Следующие даты"
                         disabled={current === total}

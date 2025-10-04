@@ -20,7 +20,7 @@
 
 .text {
     font-size: 14px;
-    line-height: 1.45;
+    line-height: 1.4;
 
     @include mixins.screen(lg) {
         font-size: 20px;

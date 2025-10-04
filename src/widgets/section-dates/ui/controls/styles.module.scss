@@ -4,10 +4,16 @@
 
 .controls {
     position: relative;
+
+    @include mixins.screen(lg) {
+        padding-inline: 80px;
+    }
 }
 
 .group {
     display: flex;
+    z-index: 1;
+    position: relative;
     flex-direction: column;
     gap: 11px;
 
@@ -45,7 +51,7 @@
     border: 1px solid rgba(var(--color-rgb-text), 0.5);
     border-radius: 100%;
     color: var(--color-text);
-    font-size: 14px;
+    font-size: 8px;
     transition: vars.$transition;
     transition-property: opacity, background-color, color;
 
@@ -68,6 +74,14 @@
     }
 }
 
+.buttonArrowPrev {
+    padding-right: 1px;
+}
+
+.buttonArrowNext {
+    padding-left: 1px;
+}
+
 .dots {
     display: flex;
     position: absolute;
@@ -75,6 +89,7 @@
     justify-content: center;
     inset: 0;
     padding-inline: 80px;
+    padding-top: 6px;
     gap: 10px;
 
     @include mixins.screen(lg) {
