@@ -25,6 +25,7 @@ type SectionDatesData = DateItem[];
 export type SectionDatesProps = ElProps<"section"> & {
     title?: ReactNode;
     data: SectionDatesData;
+    initialIndex?: number;
 };
 
 export const SectionDates: FC<SectionDatesProps> = ({
@@ -37,11 +38,14 @@ export const SectionDates: FC<SectionDatesProps> = ({
         </>
     ),
     data,
+    initialIndex = 0,
     ...restProps
 }) => {
-    const [currentDateIndex, setCurrentDateIndex] = useState(0);
+    const getMinMaxIndex = (index: number) => Math.min(data.length - 1, Math.max(0, index));
 
-    const getMinMaxIndex = (index: number) => Math.min(data.length, Math.max(0, index));
+    const initialIndexMinMax = getMinMaxIndex(initialIndex);
+
+    const [currentDateIndex, setCurrentDateIndex] = useState(initialIndexMinMax);
 
     const goToDateByIndex = (index: number) => setCurrentDateIndex(getMinMaxIndex(index));
 
@@ -54,8 +58,8 @@ export const SectionDates: FC<SectionDatesProps> = ({
             <h2 className={styles.title}>{title}</h2>
 
             <div className={styles.years}>
-                <div className={styles.yearStart}>{data[0].yearStart}</div>
-                <div className={styles.yearEnd}>{data[0].yearEnd}</div>
+                <div className={styles.yearStart}>{data[initialIndexMinMax].yearStart}</div>
+                <div className={styles.yearEnd}>{data[initialIndexMinMax].yearEnd}</div>
 
                 <Circle
                     className={styles.circle}
