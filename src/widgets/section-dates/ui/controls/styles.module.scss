@@ -12,8 +12,6 @@
 
 .group {
     display: flex;
-    z-index: 1;
-    position: relative;
     flex-direction: column;
     gap: 11px;
 
@@ -91,6 +89,7 @@
     padding-inline: 80px;
     padding-top: 6px;
     gap: 10px;
+    pointer-events: none;
 
     @include mixins.screen(lg) {
         display: none;
@@ -105,6 +104,7 @@
     border-radius: 100%;
     background-color: var(--color-text);
     opacity: 0.4;
+    pointer-events: auto;
     transition: opacity vars.$transition;
 
     &::before {
@@ -117,4 +117,5 @@
 
 .dotActive {
     opacity: 1;
+    pointer-events: none;
 }
