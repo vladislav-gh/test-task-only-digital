@@ -1,15 +1,18 @@
 {
-    "name": "only-digital",
+    "name": "test-task-only-digital",
     "version": "1.0.0",
-    "description": "",
+    "description": "Test task for Only Digital",
     "main": "index.js",
     "private": true,
+    "homepage": "https://vladislav-gh.github.io/test-task-only-digital",
     "scripts": {
         "dev": "webpack serve --config webpack.dev.js",
-        "build": "webpack --config webpack.prod.js"
+        "build": "webpack --config webpack.prod.js",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "keywords": [],
-    "author": "",
+    "author": "Vladislav Motrenko",
     "license": "ISC",
     "dependencies": {
         "@gsap/react": "^2.1.2",
@@ -35,6 +38,7 @@
         "eslint": "^9.36.0",
         "eslint-plugin-react-hooks": "^6.1.0",
         "eslint-plugin-react-refresh": "^0.4.23",
+        "gh-pages": "^6.3.0",
         "globals": "^16.4.0",
         "html-webpack-plugin": "^5.6.4",
         "prettier": "^3.6.2",
