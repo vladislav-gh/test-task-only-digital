@@ -5,12 +5,11 @@ import { gsap } from "gsap";
 
 import { ElProps } from "@Shared/types";
 
+import { ANIMATION_CHANGE_DURATION } from "../config";
 import { Circle } from "./circle";
 import { Controls } from "./controls";
 import { Events } from "./events";
 import styles from "./styles.module.scss";
-
-const ANIMATION_YEARS_DURATION = 0.75;
 
 type DataItemEvent = {
     year: number;
@@ -75,7 +74,7 @@ export const SectionDates: FC<SectionDatesProps> = ({
                         innerText: data[refPrevDateIndex.current].yearStart,
                     },
                     {
-                        duration: ANIMATION_YEARS_DURATION,
+                        duration: ANIMATION_CHANGE_DURATION,
                         innerText: data[currentDateIndex].yearStart,
                         roundProps: "innerText",
                     },
@@ -89,7 +88,7 @@ export const SectionDates: FC<SectionDatesProps> = ({
                         innerText: data[refPrevDateIndex.current].yearEnd,
                     },
                     {
-                        duration: ANIMATION_YEARS_DURATION,
+                        duration: ANIMATION_CHANGE_DURATION,
                         innerText: data[currentDateIndex].yearEnd,
                         roundProps: "innerText",
                     },
