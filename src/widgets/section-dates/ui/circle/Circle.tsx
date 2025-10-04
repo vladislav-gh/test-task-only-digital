@@ -1,6 +1,7 @@
 import { CSSProperties, FC } from "react";
 import clsx from "clsx";
 
+import { useBreakpoints } from "@Shared/hooks";
 import { ElProps } from "@Shared/types";
 
 import styles from "./styles.module.scss";
@@ -12,6 +13,12 @@ export type CircleProps = ElProps<"div"> & {
 };
 
 export const Circle: FC<CircleProps> = ({ className, currentIndex, items, onItemClick, ...restProps }) => {
+    const { isLg } = useBreakpoints();
+
+    if (!isLg) {
+        return null;
+    }
+
     return (
         <div
             className={clsx(styles.circle, className)}
