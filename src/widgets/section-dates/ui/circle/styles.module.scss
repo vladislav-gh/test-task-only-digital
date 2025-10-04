@@ -38,6 +38,7 @@ $startAngle: 60deg;
     border: 1px solid rgba(var(--color-rgb-text), 0.2);
     border-radius: 100%;
     transition: rotate vars.$transition;
+    transition-duration: 0.75s;
 }
 
 .item {
@@ -54,6 +55,7 @@ $startAngle: 60deg;
     line-height: 1.5;
     text-align: center;
     transition: transform vars.$transition;
+    transition-duration: 0.75s;
 }
 
 .itemActive {

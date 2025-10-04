@@ -32,8 +32,8 @@ export const data = [
     },
     {
         name: "Космос",
-        yearStart: 2016,
-        yearEnd: 2022,
+        yearStart: 1977,
+        yearEnd: 1990,
         events: [
             {
                 year: 2016,
@@ -67,8 +67,8 @@ export const data = [
     },
     {
         name: "Технологии",
-        yearStart: 2017,
-        yearEnd: 2022,
+        yearStart: 2001,
+        yearEnd: 2016,
         events: [
             {
                 year: 2017,
@@ -98,8 +98,8 @@ export const data = [
     },
     {
         name: "Медицина",
-        yearStart: 2015,
-        yearEnd: 2021,
+        yearStart: 1880,
+        yearEnd: 1960,
         events: [
             {
                 year: 2015,
@@ -133,8 +133,8 @@ export const data = [
     },
     {
         name: "Экология",
-        yearStart: 2018,
-        yearEnd: 2022,
+        yearStart: 2004,
+        yearEnd: 2025,
         events: [
             {
                 year: 2018,
@@ -160,8 +160,8 @@ export const data = [
     },
     {
         name: "Искусственный интеллект",
-        yearStart: 2019,
-        yearEnd: 2022,
+        yearStart: 1999,
+        yearEnd: 2005,
         events: [
             {
                 year: 2019,
