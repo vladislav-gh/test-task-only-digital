@@ -47,31 +47,19 @@
     }
 }
 
-.buttonArrowPrev,
-.buttonArrowNext {
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    margin-top: -20px;
-}
-
-.buttonArrowPrev {
-    left: 40px;
-}
-
-.buttonArrowNext {
-    right: 40px;
-}
-
 .buttonArrow {
     display: none;
 
     @include mixins.screen(lg) {
         display: flex;
+        z-index: 1;
+        position: absolute;
+        top: 50%;
         align-items: center;
         justify-content: center;
         width: 40px;
         height: 40px;
+        margin-top: -20px;
         border-radius: 100%;
         background: var(--color-white-total);
         box-shadow: 0px 0px 15px rgba(var(--color-rgb-accent-2), 0.1);
@@ -92,4 +80,12 @@
             }
         }
     }
+}
+
+.buttonArrowPrev {
+    left: 40px;
+}
+
+.buttonArrowNext {
+    right: 40px;
 }

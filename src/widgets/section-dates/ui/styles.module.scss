@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "@App/styles/mixins";
 
 .section {
@@ -35,5 +36,54 @@
             background: linear-gradient(to bottom, var(--color-accent-2), var(--color-accent-3));
             content: "";
         }
+    }
+}
+
+.years {
+    display: flex;
+    place-content: center;
+    margin-top: 56px;
+    gap: 20px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: math.div(73, 56);
+    letter-spacing: -0.02em;
+    text-align: center;
+
+    @include mixins.screen(lg) {
+        margin-top: 96px;
+        gap: 40px;
+        font-size: 200px;
+        line-height: math.div(160, 200);
+    }
+}
+
+.yearStart {
+    color: var(--color-accent-2);
+
+    @include mixins.screen(lg) {
+        color: var(--color-accent-1);
+    }
+}
+
+.yearEnd {
+    color: var(--color-accent-3);
+}
+
+.controls {
+    order: 1;
+    margin-top: 78px;
+
+    @include mixins.screen(lg) {
+        order: auto;
+        margin-top: 137px;
+    }
+}
+
+.events {
+    margin-top: 57px;
+
+    @include mixins.screen(lg) {
+        margin-top: 56px;
     }
 }

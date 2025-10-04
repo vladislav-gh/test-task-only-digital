@@ -3,11 +3,27 @@ import clsx from "clsx";
 
 import { ElProps } from "@Shared/types";
 
+import { Controls } from "./controls";
 import { Events } from "./events";
 import styles from "./styles.module.scss";
 
+type DataItemEvent = {
+    year: number;
+    text: string;
+};
+
+type DateItem = {
+    name: string;
+    yearStart: number;
+    yearEnd: number;
+    events: DataItemEvent[];
+};
+
+type SectionDatesData = DateItem[];
+
 export type SectionDatesProps = ElProps<"section"> & {
     title?: ReactNode;
+    data: SectionDatesData;
 };
 
 export const SectionDates: FC<SectionDatesProps> = ({
@@ -19,39 +35,29 @@ export const SectionDates: FC<SectionDatesProps> = ({
             даты
         </>
     ),
+    data,
     ...restProps
 }) => {
     return (
         <section className={clsx(styles.section, className)} {...restProps}>
             <h2 className={styles.title}>{title}</h2>
 
+            <div className={styles.years}>
+                <div className={styles.yearStart}>{data[0].yearStart}</div>
+                <div className={styles.yearEnd}>{data[0].yearEnd}</div>
+            </div>
+
+            <Controls
+                className={styles.controls}
+                current={1}
+                total={data.length}
+                onArrowClick={() => {}}
+                onDotClick={() => {}}
+            />
+
             <Events
-                events={[
-                    {
-                        title: "2015",
-                        text: "13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды",
-                    },
-                    {
-                        title: "2016",
-                        text: "Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11",
-                    },
-                    {
-                        title: "2017",
-                        text: "Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi",
-                    },
-                    {
-                        title: "2015",
-                        text: "13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды",
-                    },
-                    {
-                        title: "2016",
-                        text: "Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11",
-                    },
-                    {
-                        title: "2017",
-                        text: "Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi",
-                    },
-                ]}
+                className={styles.events}
+                events={data[0].events.map(e => ({ title: e.year.toString(), text: e.text }))}
             />
         </section>
     );

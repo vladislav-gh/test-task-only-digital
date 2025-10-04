@@ -1,0 +1,105 @@
+@use "sass:math";
+@use "@App/styles/vars";
+@use "@App/styles/mixins";
+
+.controls {
+    position: relative;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+
+    @include mixins.screen(lg) {
+        gap: 20px;
+    }
+}
+
+.counter {
+    font-size: 14px;
+    line-height: 1;
+
+    @include mixins.screen(lg) {
+        line-height: math.div(18, 14);
+    }
+}
+
+.arrows {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include mixins.screen(lg) {
+        gap: 20px;
+    }
+}
+
+.buttonArrow {
+    display: flex;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgba(var(--color-rgb-text), 0.5);
+    border-radius: 100%;
+    color: var(--color-text);
+    font-size: 14px;
+    transition: vars.$transition;
+    transition-property: opacity, background-color, color;
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    @include mixins.screen(lg) {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-accent-2);
+                color: var(--color-white-total);
+            }
+        }
+    }
+}
+
+.dots {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    padding-inline: 80px;
+    gap: 10px;
+
+    @include mixins.screen(lg) {
+        display: none;
+    }
+}
+
+.dot {
+    position: relative;
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background-color: var(--color-text);
+    opacity: 0.4;
+    transition: opacity vars.$transition;
+
+    &::before {
+        display: block;
+        position: absolute;
+        inset: -8px;
+        content: "";
+    }
+}
+
+.dotActive {
+    opacity: 1;
+}

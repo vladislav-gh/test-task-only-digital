@@ -6,9 +6,9 @@ import { Swiper as SwiperType } from "swiper/types";
 
 import { BREAKPOINTS } from "@Shared/config";
 import { ElProps } from "@Shared/types";
+import { Icon } from "@Shared/ui";
 
 import { Event, EventProps } from "../event/Event";
-import { ButtonArrow } from "./ButtonArrow";
 import styles from "./styles.module.scss";
 
 export type EventsProps = ElProps<"div"> & {
@@ -54,19 +54,23 @@ export const Events: FC<EventsProps> = ({ className, events, ...restProps }) => 
                 ))}
             </Swiper>
 
-            <ButtonArrow
+            <button
                 ref={refButtonPrev}
-                className={styles.buttonArrowPrev}
-                icon="angleLeft"
+                className={clsx(styles.buttonArrow, styles.buttonArrowPrev)}
+                type="button"
                 aria-label="Предыдущий слайд"
-            />
+            >
+                <Icon k="angleLeft" />
+            </button>
 
-            <ButtonArrow
+            <button
                 ref={refButtonNext}
-                className={styles.buttonArrowNext}
-                icon="angleRight"
+                className={clsx(styles.buttonArrow, styles.buttonArrowNext)}
+                type="button"
                 aria-label="Следующий слайд"
-            />
+            >
+                <Icon k="angleRight" />
+            </button>
         </div>
     );
 };
