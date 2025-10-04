@@ -11,6 +11,7 @@ $startAngle: 60deg;
     align-items: center;
     justify-content: center;
     inset: 0;
+    pointer-events: none;
 
     &::before {
         z-index: -1;
@@ -54,6 +55,7 @@ $startAngle: 60deg;
     font-size: 20px;
     line-height: 1.5;
     text-align: center;
+    pointer-events: auto;
     transition: transform vars.$transition;
     transition-duration: 0.75s;
 }
